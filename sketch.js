@@ -18,7 +18,7 @@ function setup(){
   angleMode(DEGREES); //Changing default angle mode to degrees
   colorMode(HSB); //Changing color mode to HSB
   color = 199; //initial color of globe
-  strokeWeight(.3);
+  strokeWeight(.1);
   noFill();
 
   //variables for changing sphere shape
