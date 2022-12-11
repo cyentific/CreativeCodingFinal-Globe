@@ -15,6 +15,9 @@ function preload() {
 }
 
 function setup(){
+  pointSize = 0.5;
+  pointsDensity = 5;
+
   createCanvas(800, 800, WEBGL);
   angleMode(DEGREES); //Changing default angle mode to degrees
   colorMode(HSB); //Changing color mode to HSB
@@ -38,8 +41,7 @@ function setup(){
   backgroundMusic.play();//play backgorund
 
   pixelDensity(1);
-  pointSize = 1;
-  pointsDensity = 1;
+
 
 }
 
