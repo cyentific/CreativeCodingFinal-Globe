@@ -10,7 +10,7 @@ let pointSize, pointsDensity;
 
 //load sound files from folder
 function preload() {
-  backgroundMusic = loadSound('background.mp3');
+  backgroundMusic = loadSound('background.mp3'); //https://pixabay.com/sound-effects/search/spaceship/
   soundEffect = loadSound('open.mp3');
 }
 
@@ -38,8 +38,8 @@ function setup(){
   backgroundMusic.play();//play backgorund
 
   pixelDensity(1);
-  pointSize = 5;
-  pointsDensity = 5;
+  pointSize = 1;
+  pointsDensity = 1;
 
 }
 
