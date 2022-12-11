@@ -57,8 +57,7 @@ function draw(){
       v = v + acceleration; //acceleration accumulates every time it iterates
 
       //sound fx activates every time globe expands with every mouse press
-      if(onceSong == false) //since it defaults as false, it will only play sound fx while mouse pressed
-      {
+      if(onceSong == false) { //since it defaults as false, it will only play sound fx while mouse pressed
         soundEffect.play();  //plays sound fx
         onceSong = true; //Changes soundfx boolean to true as the fx has played
       }
@@ -69,8 +68,7 @@ function draw(){
       color = color+1; // color value will increase by an increment of 1(color in HSB)
       soundEffect.stop(); //stop sound effect once mouse is no longer pressed
       onceSong = false; //change sound fx boolean to false as the fx is no longer playing
-    }
-    else{ // continues until default values established in the beginning
+    }else{ // continues until default values established in the beginning
       bumpiness = 0;
       v=0;
       color = 199;
