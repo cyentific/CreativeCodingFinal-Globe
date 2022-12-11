@@ -36,7 +36,7 @@ function setup(){
   onceSong = false; //soundfx status boolean
   backgroundMusic.play();//play backgorund
 
-  pixelDensity(1);
+  pixelDensity(0.5);
 
 }
 
