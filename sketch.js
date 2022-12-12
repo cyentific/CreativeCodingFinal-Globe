@@ -6,7 +6,6 @@ let color;
 let backgroundMusic;
 let soundEffect;
 let onceSong;
-let pointSize, pointsDensity;
 
 //load sound files from folder
 function preload() {
@@ -15,14 +14,12 @@ function preload() {
 }
 
 function setup(){
-  pointSize = 0.5;
-  pointsDensity = 5;
 
   createCanvas(800, 800, WEBGL);
   angleMode(DEGREES); //Changing default angle mode to degrees
   colorMode(HSB); //Changing color mode to HSB
   color = 199; //initial color of globe
-  strokeWeight(pointSize);
+  strokeWeight(0.1);
   noFill();
 
   //variables for changing sphere shape
@@ -90,8 +87,8 @@ rotation = rotation + .2; // rotates globe entire time by its current value + .2
 // In the double for loop below theta and phy start at 0, but theta increments by 2 until 180, while phy increases by two until 360
 // the variables x, y, z represent the different axis that create the globe
   beginShape(POINTS);
-  for(let theta = 0; theta < 180; theta += pointsDensity){ //draws points of the sphere shape through vector
-    for(let phy = 0; phy < 360; phy += pointsDensity){
+  for(let theta = 0; theta < 180; theta += 2){ //draws points of the sphere shape through vector
+    for(let phy = 0; phy < 360; phy += 2){
       let x = r*(1+bumpiness*sin(thetaValue*theta)*sin(phyValue*phy)) * sin(1*theta) * cos(phy);
       let y = r*(1+bumpiness*sin(thetaValue*theta)*sin(phyValue*phy)) * sin(1*theta) * sin(phy);
       let z = r*(1+bumpiness*sin(thetaValue*theta)*sin(phyValue*phy)) * cos(1*theta);
