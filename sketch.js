@@ -66,7 +66,7 @@ function draw() {
     }
   } else if (toggleClick === false) { //Globe will begin to contract when trackpad is clicked again
     if (volatility >= 0) {
-      volatility = volatility - v; //bumpiness will decrease by acceleration v
+      volatility = volatility - v; //volatility will decrease by acceleration v
       color = color + 1; // color value will increase by an increment of 1(color in HSB)
       soundEffect.stop(); //stop sound effect once mouse is no longer pressed
       onceSong = false; //change sound fx boolean to false as the fx is no longer playing
