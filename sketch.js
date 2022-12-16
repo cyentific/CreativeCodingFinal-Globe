@@ -100,12 +100,13 @@ function draw() {
 
 
   // I referenced this video here https://youtu.be/SGHWZz5Mrsw?t=1074
-  // In the double for loop below theta and phy start at 0, but theta increments by 2 until 180, while phy increases by two until 360
+  // I create a function of the Globe
+  //In the double for loop below theta and phy start at 0, while theta increments by 2 until 180, phy increases by two until 360
   // the variables x, y, z represent the different axis that create the globe
   function drawGlobes() {
     rotateX(rotation); //make
-    beginShape(POINTS);
-    for (let theta = 0; theta < 180; theta += 2) { //draws points of the sphere shape through vector
+    beginShape(POINTS); //drawing vector through points made through drawing points at the x,y, and z axis
+    for (let theta = 0; theta < 180; theta += 2) {
       for (let phy = 0; phy < 360; phy += 2) {
         let x = r * (1 + volatility * sin(thetaValue * theta) * sin(phyValue * phy)) * sin(1 * theta) * cos(phy); //draws a curve across x axis in sphereical shape
         let y = r * (1 + volatility * sin(thetaValue * theta) * sin(phyValue * phy)) * sin(1 * theta) * sin(phy); // draws a curve across y axis in sphereical shape
@@ -113,10 +114,10 @@ function draw() {
         vertex(x, y, z);
       }
     }
-    endShape();
+    endShape();//end of declaring points
   }
 
-function mousePressed() {
+function mousePressed() { 
   if (toggleClick == false) {
     toggleClick = true;
   } else if (toggleClick == true) {
