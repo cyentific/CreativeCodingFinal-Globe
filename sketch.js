@@ -103,7 +103,7 @@ function draw() {
   // In the double for loop below theta and phy start at 0, but theta increments by 2 until 180, while phy increases by two until 360
   // the variables x, y, z represent the different axis that create the globe
   function drawGlobes() {
-    rotateX(rotation);
+    rotateX(rotation); //make
     beginShape(POINTS);
     for (let theta = 0; theta < 180; theta += 2) { //draws points of the sphere shape through vector
       for (let phy = 0; phy < 360; phy += 2) {
