@@ -1,11 +1,12 @@
 let r;
-let bumpiness, thetaValue, phyValue;
+let volatility, thetaValue, phyValue;
 let acceleration,v;
 let rotation;
 let color;
 let backgroundMusic;
 let soundEffect;
 let onceSong;
+let toggleClick;
 
 //load sound files from folder
 function preload() {
@@ -21,9 +22,12 @@ function setup(){
   strokeWeight(.1);
   noFill();
 
+  //boolean variable to establish if trackpad has been clicked
+  toggleClick = false; //established as false so animation doesn't start until user presses trackpad
+
 	//variables for changing globe shape
   r = width/3; //radius
-  bumpiness = 0; //variable that controls globe expansion/collapse illusion
+  volatility = 0; //variable that controls globe expansion/collapse illusion
   thetaValue = 10; //default sphere theta value
   phyValue = 10; //default sphere phy value
 
@@ -47,11 +51,11 @@ function draw(){
 
 
 //The globe expands(collapse effect) when the mouse is pressed
-//The bumpiness variable controls/changes the position in space giving the illusion of expansion(or what looks like collapse)
+//The volatility variable controls/changes the position in space giving the illusion of expansion(or what looks like collapse)
   if (mouseIsPressed === true) { //globe will expand as mouse is pressed
-    if (bumpiness >= 0 ){
+    if (volatility >= 0 ){
       color = color-1; //color value will decrease by an increment of 1 (color in HSB)
-      bumpiness = bumpiness + v; //bumpiness will increase by acceleration v
+      volatility = volatility + v; //volatility will increase by acceleration v
       v = v + acceleration; //acceleration accumulates every time it iterates
      //sound fx activates every time globe expands with every mouse press
 			if(onceSong == false) //since it defaults as false, it will only play sound fx while mouse pressed
@@ -61,14 +65,14 @@ function draw(){
       }
     }
   } else { //Globe will begin to contract when mouse is no longer pressed
-    if (bumpiness >= 0){
-      bumpiness = bumpiness - v; //bumpiness will decrease by acceleration v
+    if (volatility >= 0){
+      volatility = volatility - v; //bumpiness will decrease by acceleration v
       color = color+1; // color value will increase by an increment of 1(color in HSB)
       soundEffect.stop(); //stop sound effect once mouse is no longer pressed
       onceSong = false; //change sound fx boolean to false as the fx is no longer playing
     }
     else{ // continues until default values established in the beginning
-      bumpiness = 0;
+      volatility = 0;
       v=0;
       color = 199;
     }
@@ -87,9 +91,9 @@ rotation = rotation + .2; // rotates globe entire time by its current value + .2
   beginShape(POINTS);
   for(let theta = 0; theta < 180; theta += 2){ //draws points of the sphere shape through vector
     for(let phy = 0; phy < 360; phy += 2){
-      let x = r*(1+bumpiness*sin(thetaValue*theta)*sin(phyValue*phy)) * sin(1*theta) * cos(phy);
-      let y = r*(1+bumpiness*sin(thetaValue*theta)*sin(phyValue*phy)) * sin(1*theta) * sin(phy);
-      let z = r*(1+bumpiness*sin(thetaValue*theta)*sin(phyValue*phy)) * cos(1*theta);
+      let x = r*(1+volatility*sin(thetaValue*theta)*sin(phyValue*phy)) * sin(1*theta) * cos(phy); //draws a curve across x axis in sphereical shape
+      let y = r*(1+volatility*sin(thetaValue*theta)*sin(phyValue*phy)) * sin(1*theta) * sin(phy); // draws a curve across y axis in sphereical shape
+      let z = r*(1+volatility*sin(thetaValue*theta)*sin(phyValue*phy)) * cos(1*theta); // draws a curve across z axis in sphereical shape
       vertex(x, y, z);
     }
   }
