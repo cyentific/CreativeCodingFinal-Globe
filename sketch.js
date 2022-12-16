@@ -80,13 +80,13 @@ function draw() {
   // Rotation parameters
   rotation = rotation + .2; // rotates globe entire time by its current value + .2 indefinetly as its not in conditional
   translate(-510, -510);
-  for (let i = 0; i < 3; ++i) {
-    translate(0, 200);
-    for (let j = 0; j < 3; ++j) {
+  for (let i = 0; i < 3; ++i){
+    translate(0, 250);
+    for (let j = 0; j < 3; ++j){
       if (j == 0) {
         push();
       }
-      translate(250, );
+      translate(250,0);
       drawGlobes();
       if (j == 2) {
         pop();
