@@ -95,8 +95,8 @@ function draw() {
   }
 
   rotateX(90);
-  rotateY(-25);
-  rotateZ(rotation);
+  /*rotateY(-25);
+  rotateZ(rotation);*/
 
 
   // I referenced this video here https://youtu.be/SGHWZz5Mrsw?t=1074
