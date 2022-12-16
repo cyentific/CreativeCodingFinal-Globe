@@ -97,8 +97,7 @@ function draw() {
   rotateX(90);
   /*rotateY(-25);
   rotateZ(rotation);*/
-
-
+}
   // I referenced this video here https://youtu.be/SGHWZz5Mrsw?t=1074
   // I create a function of the Globe
   //In the double for loop below theta and phy start at 0, while theta increments by 2 until 180, phy increases by two until 360
@@ -117,7 +116,7 @@ function draw() {
     endShape();//end of declaring points
   }
 
-function mousePressed() { 
+function mousePressed() {
   if (toggleClick == false) {
     toggleClick = true;
   } else if (toggleClick == true) {
