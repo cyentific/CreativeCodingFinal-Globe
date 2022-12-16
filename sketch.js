@@ -52,7 +52,7 @@ function draw(){
 
 //The globe expands(collapse effect) when the mouse is pressed
 //The volatility variable controls/changes the position in space giving the illusion of expansion(or what looks like collapse)
-  if (mouseIsPressed === true) { //globe will expand as mouse is pressed
+  if (toggleClick === true) { //globe will expand as trackpad is clicked
     if (volatility >= 0 ){
       color = color-1; //color value will decrease by an increment of 1 (color in HSB)
       volatility = volatility + v; //volatility will increase by acceleration v
@@ -64,7 +64,7 @@ function draw(){
         onceSong = true;   //Changes soundfx boolean to true as the fx has played
       }
     }
-  } else { //Globe will begin to contract when mouse is no longer pressed
+  } else if(toggleClick === false) { //Globe will begin to contract when trackpad is clicked again
     if (volatility >= 0){
       volatility = volatility - v; //bumpiness will decrease by acceleration v
       color = color+1; // color value will increase by an increment of 1(color in HSB)
@@ -78,7 +78,22 @@ function draw(){
     }
   }
 
-rotation = rotation + .2; // rotates globe entire time by its current value + .2 indefinetly as its not in conditional
+// Rotation parameters
+  rotation = rotation + .2; // rotates globe entire time by its current value + .2 indefinetly as its not in conditional
+  translate(-310, -310);
+  for(let i=0; i < 3; ++i) {
+    translate(0, 200);
+    for(let j =0; j < 3; ++j){
+      if(j==0){
+        push();
+      }
+      translate(250,);
+      drawGlobes();
+      if (j==2){
+        pop();
+      }
+    }
+  }
 
   rotateX(90);
   rotateY(-25);
@@ -88,6 +103,7 @@ rotation = rotation + .2; // rotates globe entire time by its current value + .2
 // I referenced this video here https://youtu.be/SGHWZz5Mrsw?t=1074
 // In the double for loop below theta and phy start at 0, but theta increments by 2 until 180, while phy increases by two until 360
 // the variables x, y, z represent the different axis that create the globe
+function drawGlobes(){
   beginShape(POINTS);
   for(let theta = 0; theta < 180; theta += 2){ //draws points of the sphere shape through vector
     for(let phy = 0; phy < 360; phy += 2){
@@ -98,4 +114,12 @@ rotation = rotation + .2; // rotates globe entire time by its current value + .2
     }
   }
   endShape();
+}
+
+function mousePressed() {
+  if(toggleClick ==false){
+    toggleClick = true;
+  }else if(toggleClick ==true){
+    toggleClick = false;
+  }
 }
