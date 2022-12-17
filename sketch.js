@@ -79,9 +79,9 @@ function draw() {
 
   // Rotation parameters
   rotation = rotation + 0.2; // rotates globe entire time by its current value + .2 indefinetly as its not in conditional
-  translate(-510, -510);
+  translate(-510, -510); // establishing the position of the first globe in the middle
   for (let i = 0; i < 3; ++i){
-    translate(0, 250);
+    translate(0, 250); // this for loop makes the first column
     for (let j = 0; j < 3; ++j){
       if (j == 0) {
         push();
@@ -99,12 +99,14 @@ function draw() {
   rotateZ(rotation);*/
 }
   // I referenced this video here https://youtu.be/SGHWZz5Mrsw?t=1074
-  // I create a function of the Globe
+  // I created a function to draw the globes
   //In the double for loop below theta and phy start at 0, while theta increments by 2 until 180, phy increases by two until 360
   // the variables x, y, z represent the different axis that create the globe
+  // Because the volatility variable starts at 0, the globes start as whole because each axis below
+  // includes volatility, the lines
   function drawGlobes() {
     rotateX(rotation); //make
-    beginShape(POINTS); //drawing vector through points made through drawing points at the x,y, and z axis
+    beginShape(POINTS); //drawing vector through drawing points that make lines which form a globe shape on the x,y, and z axis
     for (let theta = 0; theta < 180; theta += 2) {
       for (let phy = 0; phy < 360; phy += 2) {
         let x = r * (1 + volatility * sin(thetaValue * theta) * sin(phyValue * phy)) * sin(1 * theta) * cos(phy); //draws a curve across x axis in sphereical shape
