@@ -19,14 +19,14 @@ function setup() {
   angleMode(DEGREES); //Changing default angle mode to degrees
   colorMode(HSB); //Changing color mode to HSB
   color = 199; //initial color of globe
-  strokeWeight(.1);
+  strokeWeight(2);
   noFill();
 
   //boolean variable to establish if trackpad has been clicked
   toggleClick = false; //established as false so animation doesn't start until user presses trackpad
 
   //variables for changing globe shape
-  r = width / 3; //radius
+  r = width / 9; //radius
   volatility = 0; //variable that controls globe expansion/collapse illusion
   thetaValue = 10; //default sphere theta value
   phyValue = 10; //default sphere phy value
@@ -79,7 +79,7 @@ function draw() {
 
   // Rotation parameters
   rotation = rotation + 0.2; // rotates globe entire time by its current value + .2 indefinetly as its not in conditional
-  translate(-510, -510); // establishing the origin point to the top left corner of canvas
+  translate(-510, -510); //establishing the origin point to the top left corner of canvas
   // for loop to draw the globes in a 3x3 grid
   for (let i = 0; i < 3; ++i){ //for loop iterates 3 times, translating the anchor point down 250 pixels, increments by 1 each time
     translate(0, 250); //translates the anchor point down to create each column
@@ -101,15 +101,15 @@ function draw() {
 }
   // I referenced this video here https://youtu.be/SGHWZz5Mrsw?t=1074
   // I created a function to draw the globes
-  //In the double for loop below theta and phy start at 0, while theta increments by 2 until 180, phy increases by two until 360
+  //In the double for loop below theta and phy start at 0, while theta increments by 5 until 180, phy increases by 5 until 360
   // the variables x, y, z represent the different axis that create the globe
   // Because the volatility variable starts at 0, the globes start as whole because each axis below
   // includes volatility, but once the mouse is clicked and volatility increases, the lines expand with the increasing volatility making the lines expand in their axis
   function drawGlobes() {
     rotateX(rotation); //rotate globes at rest through x-axis with the rotation
     beginShape(POINTS); //drawing vector through drawing points that make lines which form a globe shape on the x,y, and z axis
-    for (let theta = 0; theta < 180; theta += 2) {
-      for (let phy = 0; phy < 360; phy += 2) {
+    for (let theta = 0; theta < 180; theta += 5) {
+      for (let phy = 0; phy < 360; phy += 5) {
         let x = r * (1 + volatility * sin(thetaValue * theta) * sin(phyValue * phy)) * sin(1 * theta) * cos(phy); //draws a curve across x axis in sphereical shape
         let y = r * (1 + volatility * sin(thetaValue * theta) * sin(phyValue * phy)) * sin(1 * theta) * sin(phy); // draws a curve across y axis in sphereical shape
         let z = r * (1 + volatility * sin(thetaValue * theta) * sin(phyValue * phy)) * cos(1 * theta); // draws a curve across z axis in sphereical shape
