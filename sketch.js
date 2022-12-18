@@ -79,17 +79,18 @@ function draw() {
 
   // Rotation parameters
   rotation = rotation + 0.2; // rotates globe entire time by its current value + .2 indefinetly as its not in conditional
-  translate(-510, -510); // establishing the position of the first globe in the middle
-  for (let i = 0; i < 3; ++i){
-    translate(0, 250); // this for loop makes the first column
-    for (let j = 0; j < 3; ++j){
+  translate(-510, -510); // establishing the origin point to the top left corner of canvas
+  // for loop to draw the globes in a 3x3 grid
+  for (let i = 0; i < 3; ++i){ //for loop iterates 3 times, translating the anchor point down 250 pixels, increments by 1 each time
+    translate(0, 250); //translates the anchor point down to create each column
+    for (let j = 0; j < 3; ++j){ // for loop iterates 3 times, translating anchor point right 250 pixels, increments by 1 each time
       if (j == 0) {
-        push();
+        push(); //pushes first time through
       }
-      translate(250,0);
-      drawGlobes();
+      translate(250,0); // then translates to the right to call globe function and draws the second and third globes for each row
+      drawGlobes();//
       if (j == 2) {
-        pop();
+        pop(); //pops the third time through since, 0,1,2 (when it reaches 2 itll be the last iteration)
       }
     }
   }
@@ -103,9 +104,9 @@ function draw() {
   //In the double for loop below theta and phy start at 0, while theta increments by 2 until 180, phy increases by two until 360
   // the variables x, y, z represent the different axis that create the globe
   // Because the volatility variable starts at 0, the globes start as whole because each axis below
-  // includes volatility, the lines
+  // includes volatility, but once the mouse is clicked and volatility increases, the lines expand with the increasing volatility making the lines expand in their axis
   function drawGlobes() {
-    rotateX(rotation); //make
+    rotateX(rotation); //rotate globes at rest through x-axis with the rotation
     beginShape(POINTS); //drawing vector through drawing points that make lines which form a globe shape on the x,y, and z axis
     for (let theta = 0; theta < 180; theta += 2) {
       for (let phy = 0; phy < 360; phy += 2) {
@@ -119,9 +120,9 @@ function draw() {
   }
 
 function mousePressed() {
-  if (toggleClick == false) {
+  if (toggleClick == false) { // because this variable starts as false at rest, pressing the mouse pad once will turn it true, which will start the visual
     toggleClick = true;
-  } else if (toggleClick == true) {
-    toggleClick = false;
+  } else if (toggleClick == true) { // then because I only want the animation to start once clicked and end when clicked again
+    toggleClick = false; //this variable will be turned false after it is clicked the second time
   }
 }
